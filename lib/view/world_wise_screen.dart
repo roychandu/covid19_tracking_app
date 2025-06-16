@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:pie_chart/pie_chart.dart';
 
 class WorldWiseScreen extends StatefulWidget {
   const WorldWiseScreen({super.key});
@@ -11,6 +12,14 @@ class WorldWiseScreen extends StatefulWidget {
 
 class _WorldWiseScreenState extends State<WorldWiseScreen>
     with TickerProviderStateMixin {
+  // Colors for pie chart
+  final ColorList = [
+    Colors.blue,
+    Colors.green,
+    Colors.red,
+    Colors.orange,
+    Colors.purple,
+  ];
   // AnimationController _controller;
   late final AnimationController _controller = AnimationController(
     vsync: this,
@@ -39,6 +48,35 @@ class _WorldWiseScreenState extends State<WorldWiseScreen>
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold());
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            PieChart(
+              dataMap: const {
+                "Total Cases": 1000,
+                "Recovered": 800,
+                "Deaths": 200,
+                "Active Cases": 100,
+                "infected": 50,
+              },
+              // chart radius
+              chartRadius: MediaQuery.of(context).size.width / 2.5,
+              // chart legend
+              legendOptions: const LegendOptions(
+                legendPosition: LegendPosition.left,
+              ),
+              // chart animation
+              animationDuration: const Duration(seconds: 3),
+              // chart type
+              chartType: ChartType.ring,
+              // color list for pie chart
+              colorList: ColorList,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
