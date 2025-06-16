@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:covid19_tracking_app/common_widgets/Reuseable_row.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
@@ -73,6 +74,20 @@ class _WorldWiseScreenState extends State<WorldWiseScreen>
               chartType: ChartType.ring,
               // color list for pie chart
               colorList: ColorList,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                child: Column(
+                  children: [
+                    ReuseableRow(title: 'Total', value: '20'),
+                    ReuseableRow(title: 'Recovered', value: '15'),
+                    ReuseableRow(title: 'Deaths', value: '2'),
+                    ReuseableRow(title: 'Active Cases', value: '3'),
+                    ReuseableRow(title: 'Infected', value: '5'),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

@@ -11,11 +11,17 @@ class ReuseableRow extends StatefulWidget {
 class _ReuseableRowState extends State<ReuseableRow> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(children: [Text(widget.title), Text(widget.value)]),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [Text(widget.title), Text(widget.value)],
+          ),
+        ],
+      ),
     );
   }
 }
