@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:covid19_tracking_app/view/world_wise_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,10 +18,21 @@ class _SplashScreenState extends State<SplashScreen>
   )..repeat();
 
   @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
   void initState() {
     // TODO: implement initState
     super.initState();
-    // Timer(const Duration(seconds: 3), ()=> Navigator.pushReplacement((context), MaterialPageRoute(builder: builder)) );
+    Timer(
+      const Duration(seconds: 3),
+      () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => WorldWiseScreen()),
+      ),
+    );
   }
 
   @override
