@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:covid19_tracking_app/Models/country_wise_model.dart';
 import 'package:covid19_tracking_app/Models/world_states_model.dart';
 import 'package:covid19_tracking_app/Services/Utilities/api_url.dart';
 import 'package:http/http.dart' as http;
@@ -16,10 +17,12 @@ class StateServices {
     }
   }
 
-  Future<List<dynamic>> countryDataFunc() async {
+  Future<List<CountryReport>> countryDataFunc() async {
     final response = await http.get(Uri.parse(Appurl.countriesApi));
+
     if (response.statusCode == 200) {
-      return jsonDecode(response.body);
+      List jsondata = jsonDecode(response.body);
+      return jsondata.map((data) => CountryReport.fromJson(data)).toList();
     } else {
       throw Exception('Faild to fatching data!');
     }

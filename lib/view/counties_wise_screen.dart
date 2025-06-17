@@ -48,22 +48,24 @@ class _CountiesWiseScreenState extends State<CountiesWiseScreen> {
                     return ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
-                        String name = snapshot.data![index]['country'];
+                        String name = snapshot.data![index].country.toString();
                         if (searchController.text.isEmpty) {
+                          print(snapshot.data![index].country);
                           return ListTile(
                             leading: Image(
                               width: 50,
                               height: 50,
                               image: NetworkImage(
-                                snapshot.data?[index]['countryInfo']['flag'],
+                                snapshot.data![index].countryInfo!.flag
+                                    .toString(),
                               ),
                             ),
                             title: Text(
-                              snapshot.data![index]['country'],
+                              snapshot.data![index].country.toString(),
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             subtitle: Text(
-                              'Cases : ${snapshot.data![index]['cases']}',
+                              'Cases : ${snapshot.data![index].cases}',
                             ),
                           );
                         } else if (name.toLowerCase().contains(
@@ -74,15 +76,16 @@ class _CountiesWiseScreenState extends State<CountiesWiseScreen> {
                               width: 50,
                               height: 50,
                               image: NetworkImage(
-                                snapshot.data?[index]['countryInfo']['flag'],
+                                snapshot.data![index].countryInfo!.flag
+                                    .toString(),
                               ),
                             ),
                             title: Text(
-                              snapshot.data![index]['country'],
+                              snapshot.data![index].country.toString(),
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             subtitle: Text(
-                              'Cases : ${snapshot.data![index]['cases']}',
+                              'Cases : ${snapshot.data![index].cases}',
                             ),
                           );
                         } else {
