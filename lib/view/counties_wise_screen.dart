@@ -1,3 +1,4 @@
+import 'package:covid19_tracking_app/Services/state_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,6 +13,7 @@ class _CountiesWiseScreenState extends State<CountiesWiseScreen> {
   TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    StateServices services = StateServices();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -33,6 +35,7 @@ class _CountiesWiseScreenState extends State<CountiesWiseScreen> {
                 ),
               ),
             ),
+            FutureBuilder(future: services, builder: (context, snapshot) {}),
           ],
         ),
       ),
