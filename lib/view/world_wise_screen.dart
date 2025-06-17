@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:covid19_tracking_app/Models/world_states_model.dart';
 import 'package:covid19_tracking_app/Services/state_services.dart';
 import 'package:covid19_tracking_app/common_widgets/Reuseable_row.dart';
+import 'package:covid19_tracking_app/view/counties_wise_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pie_chart/pie_chart.dart';
@@ -133,19 +134,29 @@ class _WorldWiseScreenState extends State<WorldWiseScreen>
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Container(
-                          height: 60,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.blue,
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Track Counties',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CountiesWiseScreen(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            height: 60,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.blue,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Track Counties',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
