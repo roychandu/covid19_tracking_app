@@ -26,6 +26,7 @@ class _ReuseableRowState extends State<ReuseableRow> {
               ],
             ),
           ),
+          Divider(),
         ],
       ),
     );
