@@ -26,6 +26,10 @@ class _CountiesWiseScreenState extends State<CountiesWiseScreen> {
             Padding(
               padding: const EdgeInsets.all(12),
               child: TextFormField(
+                controller: searchController,
+                onChanged: (value) {
+                  setState(() {});
+                },
                 decoration: InputDecoration(
                   icon: Icon(Icons.search),
                   hintText: 'Search with country name',
@@ -44,22 +48,46 @@ class _CountiesWiseScreenState extends State<CountiesWiseScreen> {
                     return ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
-                        return ListTile(
-                          leading: Image(
-                            width: 50,
-                            height: 50,
-                            image: NetworkImage(
-                              snapshot.data?[index]['countryInfo']['flag'],
+                        String name = snapshot.data![index]['country'];
+                        if (searchController.text.isEmpty) {
+                          return ListTile(
+                            leading: Image(
+                              width: 50,
+                              height: 50,
+                              image: NetworkImage(
+                                snapshot.data?[index]['countryInfo']['flag'],
+                              ),
                             ),
-                          ),
-                          title: Text(
-                            snapshot.data![index]['country'],
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          subtitle: Text(
-                            'Cases : ${snapshot.data![index]['cases']}',
-                          ),
-                        );
+                            title: Text(
+                              snapshot.data![index]['country'],
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            subtitle: Text(
+                              'Cases : ${snapshot.data![index]['cases']}',
+                            ),
+                          );
+                        } else if (name.toLowerCase().contains(
+                          searchController.text.toLowerCase(),
+                        )) {
+                          return ListTile(
+                            leading: Image(
+                              width: 50,
+                              height: 50,
+                              image: NetworkImage(
+                                snapshot.data?[index]['countryInfo']['flag'],
+                              ),
+                            ),
+                            title: Text(
+                              snapshot.data![index]['country'],
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            subtitle: Text(
+                              'Cases : ${snapshot.data![index]['cases']}',
+                            ),
+                          );
+                        } else {
+                          return Container();
+                        }
                       },
                     );
                   } else {
