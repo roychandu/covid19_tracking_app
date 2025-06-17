@@ -31,13 +31,6 @@ class _WorldWiseScreenState extends State<WorldWiseScreen>
   void initState() {
     // TODO: implement initState
     super.initState();
-    // Timer() for duration of animation
-    Timer(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => WorldWiseScreen()),
-      );
-    });
   }
 
   @override
@@ -63,10 +56,11 @@ class _WorldWiseScreenState extends State<WorldWiseScreen>
                 "infected": 50,
               },
               // chart radius
-              chartRadius: MediaQuery.of(context).size.width / 2.5,
+              chartRadius: MediaQuery.of(context).size.width / 2.2,
               // chart legend
               legendOptions: const LegendOptions(
                 legendPosition: LegendPosition.left,
+                legendTextStyle: TextStyle(fontSize: 20),
               ),
               // chart animation
               animationDuration: const Duration(seconds: 3),

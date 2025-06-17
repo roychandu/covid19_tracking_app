@@ -16,9 +16,15 @@ class _ReuseableRowState extends State<ReuseableRow> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text(widget.title), Text(widget.value)],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(widget.title, style: TextStyle(fontSize: 20)),
+                Text(widget.value, style: TextStyle(fontSize: 20)),
+              ],
+            ),
           ),
         ],
       ),
