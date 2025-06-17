@@ -5,12 +5,12 @@ import 'package:covid19_tracking_app/Services/Utilities/api_url.dart';
 import 'package:http/http.dart' as http;
 
 class StateServices {
-  Future<List<CovidReport>> world_Data_fucn() async {
+  Future<CovidReport> world_Data_fucn() async {
     final response = await http.get(Uri.parse(Appurl.worldwiseApi));
 
     if (response.statusCode == 200) {
-      List jsondata = jsonDecode(response.body);
-      return jsondata.map((data) => CovidReport.fromJson(data)).toList();
+      final jsondata = jsonDecode(response.body);
+      return CovidReport.fromJson(jsondata);
     } else {
       throw Exception('Faild to fetching data!');
     }
