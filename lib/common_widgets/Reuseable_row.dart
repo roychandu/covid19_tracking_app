@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'animate_counter.dart'; // Make sure this import is correct
 
 class ReuseableRow extends StatefulWidget {
-  String title, value;
-  ReuseableRow({super.key, required this.title, required this.value});
+  final String title;
+  final String value;
+
+  const ReuseableRow({super.key, required this.title, required this.value});
 
   @override
   State<ReuseableRow> createState() => _ReuseableRowState();
@@ -11,6 +14,8 @@ class ReuseableRow extends StatefulWidget {
 class _ReuseableRowState extends State<ReuseableRow> {
   @override
   Widget build(BuildContext context) {
+    int numericValue = int.tryParse(widget.value) ?? 0;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -22,7 +27,10 @@ class _ReuseableRowState extends State<ReuseableRow> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(widget.title, style: TextStyle(fontSize: 20)),
-                Text(widget.value, style: TextStyle(fontSize: 20)),
+                AnimatedCounter(
+                  value: numericValue,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
           ),
