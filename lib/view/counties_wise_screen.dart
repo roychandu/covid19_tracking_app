@@ -54,7 +54,35 @@ class _CountiesWiseScreenState extends State<CountiesWiseScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      CountryWiseDetailsScreen(),
+                                      CountryWiseDetailsScreen(
+                                        country_name: snapshot
+                                            .data![index]
+                                            .country
+                                            .toString(),
+                                        country_flag: snapshot
+                                            .data![index]
+                                            .countryInfo!
+                                            .flag
+                                            .toString(),
+                                        cases: snapshot.data![index].cases!
+                                            .toInt(),
+                                        deaths: snapshot.data![index].deaths!
+                                            .toInt(),
+                                        recoverd: snapshot
+                                            .data![index]
+                                            .recovered!
+                                            .toInt(),
+                                        population: snapshot
+                                            .data![index]
+                                            .population!
+                                            .toInt(),
+                                        active: snapshot.data![index].active!
+                                            .toInt(),
+                                        critical: snapshot
+                                            .data![index]
+                                            .critical!
+                                            .toInt(),
+                                      ),
                                 ),
                               );
                             },
